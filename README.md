@@ -4,13 +4,16 @@ Next.jsとPayload CMSによるフルスタックアプリのボイラープレ�
 
 ## 主な技術スタック
 
+- daisyUI
 - Next.js
 - Payload CMS
 - Playwright
 - React
 - SQLite
+- Tailwind CSS
 - TypeScript
 - Vitest
+- Zustand
 
 ## クイックスタート
 
