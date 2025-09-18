@@ -34,10 +34,10 @@ export default async function Home() {
 
   return (
     <div id='page' className='flex h-screen flex-col pt-16'>
-      <title>next-app-ts-tw</title>
+      <title>payload-blank</title>
       <meta
         name='description'
-        content='A Next.js app built with TypeScript, TailwindCSS and daisyUI'
+        content='A boilerplate for a full-stack app built with Next.js and Payload CMS'
       />
 
       <Header />
