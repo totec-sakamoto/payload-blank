@@ -1,19 +1,34 @@
-import React from 'react'
+import { Noto_Sans_JP } from 'next/font/google'
+import './main.scss'
 import './styles.css'
 
-export const metadata = {
-  description: 'A blank template using Payload in a Next.js app.',
-  title: 'Payload Blank Template',
+type RootLayoutProps = {
+  children: React.ReactNode
 }
 
-export default async function RootLayout(props: { children: React.ReactNode }) {
-  const { children } = props
+// Load Noto Sans JP font with swap display and latin subset
+const noto = Noto_Sans_JP({
+  display: 'swap',
+  subsets: ['latin'],
+  variable: '--font-noto',
+})
 
+/**
+ * Root layout.
+ * Sets up global styles, font, and favicon.
+ */
+
+export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html lang='en'>
-      <body>
-        <main>{children}</main>
-      </body>
+    <html lang='ja' className={noto.className}>
+      <head>
+        <link href='/favicon.svg' rel='icon' />
+        <link
+          href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css'
+          rel='stylesheet'
+        />
+      </head>
+      <body>{children}</body>
     </html>
   )
 }
