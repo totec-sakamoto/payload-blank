@@ -20,6 +20,25 @@ export default buildConfig({
         Button: './components/admin/LogoutButton',
       },
     },
+    livePreview: {
+      url: ({ data, req, collectionConfig }) =>
+        `${req.protocol}//${req.host}/${collectionConfig?.slug}/${data.slug}`,
+      collections: ['posts'],
+      breakpoints: [
+        {
+          label: 'Mobile',
+          name: 'mobile',
+          width: 375,
+          height: 812,
+        },
+        {
+          label: 'Tablet',
+          name: 'tablet',
+          width: 768,
+          height: 1024,
+        },
+      ],
+    },
   },
   collections: [Users, Posts, Media],
   editor: lexicalEditor(),
