@@ -21,22 +21,6 @@ export default async function Home() {
   const payload = await getPayload({ config: payloadConfig })
   const { user } = await payload.auth({ headers })
 
-  // Example: Get `posts` collection
-  const posts = await payload.find({
-    collection: 'posts',
-    limit: 10,
-    pagination: false,
-    sort: '-publishedDate',
-  })
-  console.log(posts.docs)
-
-  // Example: Get single post out of `posts` collection
-  const singlePost = await payload.findByID({
-    collection: 'posts',
-    id: '1',
-  })
-  console.log(singlePost)
-
   return (
     <div id='page' className='flex h-screen flex-col pt-16'>
       <title>payload-blank</title>
