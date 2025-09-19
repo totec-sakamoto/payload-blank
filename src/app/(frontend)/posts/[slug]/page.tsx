@@ -49,7 +49,6 @@ export default async function PostPage({ params }: PageProps) {
 
       <main className='container mx-auto flex-grow px-4 py-8'>
         <section className='stack-4'>
-          {/* Breadcrumb navigation */}
           <nav className='breadcrumbs text-sm'>
             <ul>
               <li>

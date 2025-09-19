@@ -29,6 +29,15 @@ export default async function PostsIndex() {
 
       <main className='container mx-auto flex-grow px-4 py-8'>
         <section className='stack-4'>
+          <nav className='breadcrumbs text-sm'>
+            <ul>
+              <li>
+                <Link href='/'>Home</Link>
+              </li>
+              <li>Posts</li>
+            </ul>
+          </nav>
+
           <h1>Posts</h1>
 
           {posts.docs.length === 0 ? (
