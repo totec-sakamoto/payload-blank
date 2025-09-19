@@ -15,6 +15,11 @@ export default buildConfig({
     importMap: {
       baseDir: path.resolve(dirname),
     },
+    components: {
+      logout: {
+        Button: './components/admin/LogoutButton',
+      },
+    },
   },
   collections: [Users, Posts, Media],
   editor: lexicalEditor(),

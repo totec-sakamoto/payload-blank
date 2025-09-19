@@ -15,6 +15,7 @@ export default function Header() {
   // Navigation items for the dropdown menu
   const navigationItems: NavigationItem[] = [
     { href: '/catalog', label: 'Catalog' },
+    { href: '/posts', label: 'Posts' },
   ]
 
   return (

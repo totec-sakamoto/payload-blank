@@ -2,6 +2,14 @@ import type { CollectionConfig } from 'payload'
 
 export const Media: CollectionConfig = {
   slug: 'media',
+  access: {
+    // Allow public read access to media files
+    read: () => true,
+    // Restrict creation, update, and deletion to authenticated users
+    create: ({ req: { user } }) => !!user,
+    update: ({ req: { user } }) => !!user,
+    delete: ({ req: { user } }) => !!user,
+  },
   upload: {
     staticDir: 'media',
     imageSizes: [

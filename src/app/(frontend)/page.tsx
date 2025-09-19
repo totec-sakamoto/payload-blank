@@ -1,6 +1,8 @@
 import { headers as getHeaders } from 'next/headers'
 import Link from 'next/link'
 import { getPayload } from 'payload'
+import dayjs from 'dayjs'
+import 'dayjs/locale/ja'
 import config from '@/payload.config'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
@@ -11,26 +13,13 @@ import Footer from '@/components/Footer'
  */
 
 export default async function Home() {
+  // Init date format as Japan locale
+  dayjs.locale('ja')
+
   const headers = await getHeaders()
   const payloadConfig = await config
   const payload = await getPayload({ config: payloadConfig })
   const { user } = await payload.auth({ headers })
-
-  // Example: Get `posts` collection
-  const posts = await payload.find({
-    collection: 'posts',
-    limit: 10,
-    pagination: false,
-    sort: '-id',
-  })
-  console.log(posts.docs)
-
-  // Example: Get single post out of `posts` collection
-  const singlePost = await payload.findByID({
-    collection: 'posts',
-    id: '1',
-  })
-  console.log(singlePost)
 
   return (
     <div id='page' className='flex h-screen flex-col pt-16'>
