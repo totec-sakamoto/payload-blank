@@ -25,6 +25,10 @@ export const Posts: CollectionConfig = {
       required: true,
     },
     {
+      name: 'description',
+      type: 'text',
+    },
+    {
       name: 'content',
       type: 'richText',
     },

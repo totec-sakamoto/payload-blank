@@ -144,7 +144,7 @@ export async function generateMetadata({ params }: PageProps) {
   const eyecatch =
     typeof post.eyecatch === 'object' ? (post.eyecatch as Media) : null
 
-  // Extract description from content safely
+  // Extract description from content safely (in case `description` field is empty)
   const getContentDescription = (content: Post['content']): string => {
     if (!content?.root?.children) return ''
 
@@ -164,7 +164,7 @@ export async function generateMetadata({ params }: PageProps) {
     return ''
   }
 
-  const description = getContentDescription(post.content) || post.title
+  const description = post.description || getContentDescription(post.content)
 
   return {
     title: post.title,
