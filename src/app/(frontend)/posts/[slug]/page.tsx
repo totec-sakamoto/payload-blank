@@ -156,7 +156,7 @@ export async function generateMetadata({ params }: PageProps) {
       ) {
         for (const textNode of child.children) {
           if (textNode.type === 'text' && textNode.text) {
-            return textNode.text.substring(0, 160)
+            return textNode.text.substring(0, 120)
           }
         }
       }
