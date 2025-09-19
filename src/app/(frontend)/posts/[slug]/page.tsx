@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { getPayload } from 'payload'
@@ -64,11 +65,12 @@ export default async function PostPage({ params }: PageProps) {
           <article className='stack-4'>
             {/* Hero image */}
             {eyecatch && (
-              <div className='relative h-64 w-full md:h-96'>
-                <img
+              <div className='relative h-80'>
+                <Image
                   src={eyecatch.url || ''}
-                  alt={eyecatch.alt || post.title}
+                  fill
                   className='h-full w-full object-cover'
+                  alt={eyecatch.alt || post.title}
                 />
               </div>
             )}
@@ -144,7 +146,7 @@ export async function generateMetadata({ params }: PageProps) {
     typeof post.eyecatch === 'object' ? (post.eyecatch as Media) : null
 
   // Extract description from content safely
-  const getContentDescription = (content: any): string => {
+  const getContentDescription = (content: Post['content']): string => {
     if (!content?.root?.children) return ''
 
     for (const child of content.root.children) {

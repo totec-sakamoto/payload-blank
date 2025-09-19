@@ -28,15 +28,15 @@ export default async function PostsIndex() {
       <Header />
 
       <main className='container mx-auto flex-grow px-4 py-8'>
-        <div className='mx-auto max-w-4xl'>
-          <h1 className='mb-8 text-4xl font-bold text-gray-900'>Posts</h1>
+        <section className='stack-4'>
+          <h1>Posts</h1>
 
           {posts.docs.length === 0 ? (
-            <div className='py-12 text-center'>
-              <p className='text-lg text-gray-600'>まだ投稿がありません。</p>
+            <div className='alert' role='alert'>
+              まだ投稿がありません。
             </div>
           ) : (
-            <div className='grid grid-cols-2 gap-6'>
+            <div className='grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3'>
               {posts.docs.map((post: Post) => {
                 const eyecatch =
                   typeof post.eyecatch === 'object'
@@ -48,21 +48,21 @@ export default async function PostsIndex() {
                     key={post.id}
                     href={`/posts/${post.slug}`}
                     className='card bg-base-100 shadow-sm'>
-                    <figure>
+                    <figure className='relative h-48'>
                       {eyecatch ? (
                         <Image
                           src={eyecatch.sizes?.thumbnail?.url || ''}
-                          width={192}
-                          height={192}
+                          fill
+                          className='h-full w-full object-cover'
                           alt={eyecatch.alt || post.title}
                         />
                       ) : (
                         <Image
                           src={
-                            'https://dummyjson.com/image/480x480/282828?text=No+image'
+                            'https://dummyjson.com/image/320x320/282828?text=No+image'
                           }
-                          width={192}
-                          height={192}
+                          fill
+                          className='h-full w-full object-cover'
                           alt='No image'
                         />
                       )}
@@ -87,7 +87,7 @@ export default async function PostsIndex() {
               })}
             </div>
           )}
-        </div>
+        </section>
       </main>
 
       <Footer />
