@@ -1,6 +1,8 @@
 import { headers as getHeaders } from 'next/headers'
 import Link from 'next/link'
 import { getPayload } from 'payload'
+import dayjs from 'dayjs'
+import 'dayjs/locale/ja'
 import config from '@/payload.config'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
@@ -11,6 +13,9 @@ import Footer from '@/components/Footer'
  */
 
 export default async function Home() {
+  // Init date format as Japan locale
+  dayjs.locale('ja')
+
   const headers = await getHeaders()
   const payloadConfig = await config
   const payload = await getPayload({ config: payloadConfig })
@@ -21,7 +26,7 @@ export default async function Home() {
     collection: 'posts',
     limit: 10,
     pagination: false,
-    sort: '-id',
+    sort: '-publishedDate',
   })
   console.log(posts.docs)
 
